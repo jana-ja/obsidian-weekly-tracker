@@ -2,7 +2,7 @@
 .weekly-tracker-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem 0;
+  gap: 0.8rem 0;
   align-items: center;
   width: 100%;
   margin: 0.35rem 0.35rem;
@@ -17,8 +17,8 @@
 }
 
 .weekly-tracker-blob {
-  width: 3rem;
-  height: 3rem;
+  width: 2.7rem;
+  height: 2.7rem;
   border-radius: 999px;
   border: 2px solid #8a8f99;
   background-color: #1b1b1d;
@@ -46,13 +46,13 @@
 .weekly-tracker-blob .week-label {
   width: 100%;
   text-align: center;
-  font-size: 1ren;
+  font-size: 0.7ren;
   font-weight: 900;
   line-height: 1;
 }
 
 .tracker-line {
-  width: 0.7rem;
+  width: 0.8rem;
   height: 0.25rem;
   background-color: #4a4d52;
   display: inline-block;
@@ -63,7 +63,7 @@
 }
 
 .tracker-spacer {
-  width: 0.7rem;
+  width: 0.8rem;
   height: 0.25rem;
   display: inline-block;
 }
