@@ -6,3 +6,35 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+.weekly-tracker-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.weekly-tracker-blob {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background-color: transparent;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.weekly-tracker-blob.filled {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.weekly-tracker-blob.outlined {
+  border-color: #ccc;
+}
+
+.markdown-preview-view .weekly-tracker-container {
+  width: 100%;
+}
