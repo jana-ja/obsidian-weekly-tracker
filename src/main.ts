@@ -15,7 +15,7 @@ export default class WeeklyTrackerPlugin extends Plugin {
 	async onload() {
 		console.log('loading plugin')
 		
-		await this.loadSettings();
+		// await this.loadSettings();
 		
 		// Initialize the weekly notes store after layout is ready (ensures plugins are loaded)
 		this.app.workspace.onLayoutReady(() => {

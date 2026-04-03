@@ -10,13 +10,90 @@ If your plugin does not need CSS, delete this file.
 .weekly-tracker-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+  width: 100%;
+  margin: 0.35rem 0;
+}
+
+.weekly-tracker-cell {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  /* margin-right: 0.35rem; */
+  margin-top: 0.35rem;
+}
+
+.weekly-tracker-cell:last-child {
+  margin-right: 0;
+}
+
+.weekly-tracker-blob {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 2px solid #8a8f99;
+  background-color: #1b1b1d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: 800;
+  color: #d4d7dd;
+  font-size: 15px;
+}
+
+.weekly-tracker-blob.filled {
+  background-color: #4aae91;
+  border-color: #4aae91;
+  color: white;
+}
+
+.weekly-tracker-blob.outlined {
+  background-color: #1b1b1d;
+  border-color: #5f6368;
+  color: #ddd;
+}
+
+.weekly-tracker-blob .week-label {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.tracker-line {
+  width: 16px;
+  height: 4px;
+  background-color: #4a4d52;
+  display: inline-block;
+}
+
+.tracker-line.active {
+  background-color: #4aae91;
+}
+
+.tracker-spacer {
+  width: 16px;
+  height: 4px;
+  display: inline-block;
+}
+
+
+
+
+/* .weekly-tracker-container {
+  display: flex;
+  flex-wrap: wrap;
   gap: 4px;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
-}
+} */
 
-.weekly-tracker-blob {
+/* .weekly-tracker-blob {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -24,16 +101,16 @@ If your plugin does not need CSS, delete this file.
   background-color: transparent;
   display: inline-block;
   flex: 0 0 auto;
-}
+} */
 
-.weekly-tracker-blob.filled {
+/* .weekly-tracker-blob.filled {
   background-color: #4CAF50;
   border-color: #4CAF50;
 }
 
 .weekly-tracker-blob.outlined {
   border-color: #ccc;
-}
+} */
 
 .markdown-preview-view .weekly-tracker-container {
   width: 100%;
