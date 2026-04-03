@@ -1,3 +1,6 @@
+// currently not used because the seetings of period notes are used instead
+// can be set up so that users can change the settings for this plugin if periodic notes is not installed,
+// but if it is installed, the settings from periodic notes will be used and these settings will be hidden
 import { App, PluginSettingTab, Setting } from "obsidian";
 import { appHasDailyNotesPluginLoaded } from "obsidian-daily-notes-interface";
 
