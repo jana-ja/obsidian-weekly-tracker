@@ -1,13 +1,11 @@
 import {
-	getWeeklyNote,
 	getWeeklyNoteSettings,
 } from "obsidian-daily-notes-interface";
 import { Notice, Plugin} from 'obsidian';
-import {DEFAULT_SETTINGS, WeeklyTrackerSettings, WeeklyTrackerSettingTab} from "./settings";
+// import {DEFAULT_SETTINGS, WeeklyTrackerSettings, WeeklyTrackerSettingTab} from "./settings";
 import { settings, weeklyNotes } from "./ui/stores";
 import { getWeeklyHabitData } from "./logic";
 import { renderWeeklyHabitTracker } from "./renderer";
-import { get } from "svelte/store";
 import type { Unsubscriber } from "svelte/store";
 
 export default class WeeklyTrackerPlugin extends Plugin {
@@ -41,7 +39,6 @@ export default class WeeklyTrackerPlugin extends Plugin {
 		});
 		
 		function refreshRenderedTrackers() {
-			const notes = get(weeklyNotes);
 			document.querySelectorAll<HTMLElement>('.weekly-tracker-container').forEach(container => {
 				const year = parseInt(container.dataset.year ?? '2026');
 				const habitData = getWeeklyHabitData(year);
@@ -80,7 +77,7 @@ export default class WeeklyTrackerPlugin extends Plugin {
 		);
 		
 		// This adds a settings tab so the user can configure various aspects of the plugin
-		this.addSettingTab(new WeeklyTrackerSettingTab(this.app, this));
+		// this.addSettingTab(new WeeklyTrackerSettingTab(this.app, this));
 		
 		// If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
 		// Using this function will automatically remove the event listener when this plugin is disabled.
@@ -97,11 +94,11 @@ export default class WeeklyTrackerPlugin extends Plugin {
 		this.weeklyNotesUnsub?.();
 	}
 	
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() as Partial<WeeklyTrackerSettings>);
-	}
+	// async loadSettings() {
+	// 	this.options = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() as Partial<WeeklyTrackerSettings>);
+	// }
 	
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
+	// async saveSettings() {
+	// 	await this.saveData(this.options);
+	// }
 }
