@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "weekly-tracker-plugin",
+	"name": "Weekly Tracker Plugin",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Display a weekly note tracker from a code block with custom color. Work together with the Periodic Notes plugin.",
+	"author": "jana-ja",
+	"authorUrl": "https://github.com/jana-ja",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }
