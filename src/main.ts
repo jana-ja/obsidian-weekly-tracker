@@ -8,6 +8,20 @@ import { getWeeklyHabitData } from "./logic";
 import { renderWeeklyHabitTracker } from "./renderer";
 import type { Unsubscriber } from "svelte/store";
 
+function parseTrackerParams(source: string): { year: number; color: string } {
+	const params: Record<string, string> = {};
+	const lines = source.trim().split('\n');
+	for (const line of lines) {
+		const [key, ...valueParts] = line.split(':');
+		if (key && valueParts.length > 0) {
+			params[key.trim()] = valueParts.join(':').trim();
+		}
+	}
+	const year = parseInt(params.year || '2026');
+	const color = params.color || '#4CAF50';
+	return { year, color };
+}
+
 export default class WeeklyTrackerPlugin extends Plugin {
 	// public options: WeeklyTrackerSettings;
 	private weeklyNotesUnsub: Unsubscriber | null = null;
@@ -25,9 +39,9 @@ export default class WeeklyTrackerPlugin extends Plugin {
 			this.registerMarkdownCodeBlockProcessor('weekly-tracker', (source, el, ctx) => {
 				// Force synchronous reflow to settle layout before rendering
 				void el.offsetWidth;
-				const year = parseInt(source.trim() || '2026');
+				const { year, color } = parseTrackerParams(source);
 				const habitData = getWeeklyHabitData(year);
-				const html = renderWeeklyHabitTracker(habitData, year);
+				const html = renderWeeklyHabitTracker(habitData, year, color);
 				el.innerHTML = html;
 				console.log("rendered width:", el.getBoundingClientRect().width);
 			});
@@ -41,6 +55,7 @@ export default class WeeklyTrackerPlugin extends Plugin {
 		function refreshRenderedTrackers() {
 			document.querySelectorAll<HTMLElement>('.weekly-tracker-container').forEach(container => {
 				const year = parseInt(container.dataset.year ?? '2026');
+				const color = container.dataset.color ?? '#4CAF50';
 				const habitData = getWeeklyHabitData(year);
 				
 				container.querySelectorAll<HTMLElement>('.weekly-tracker-blob').forEach(blob => {
@@ -48,7 +63,13 @@ export default class WeeklyTrackerPlugin extends Plugin {
 					const shouldFill = Boolean(habitData[week]);
 					blob.classList.toggle('filled', shouldFill);
 					blob.classList.toggle('outlined', !shouldFill);
+					// blob.style.backgroundColor = shouldFill ? color : 'transparent';
+					// blob.style.borderColor = color;
 				});
+				
+				// container.querySelectorAll<HTMLElement>('.tracker-line').forEach(line => {
+				// 	line.style.backgroundColor = color;
+				// });
 			});
 		}
 		

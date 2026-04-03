@@ -1,4 +1,4 @@
-export function renderWeeklyHabitTracker(habitData: Record<string, boolean>, year: number): string {
+export function renderWeeklyHabitTracker(habitData: Record<string, boolean>, year: number, color: string): string {
   const sortedWeeks = Object.entries(habitData)
     .map(([week, done]) => {
       const weekNumber = week.match(/W(\d{2})$/)?.[1] ?? "??";
@@ -12,13 +12,13 @@ export function renderWeeklyHabitTracker(habitData: Record<string, boolean>, yea
 
     return `
       <div class="weekly-tracker-cell" data-week="${entry.week}">
-        <span class="weekly-tracker-blob ${entry.done ? 'filled' : 'outlined'}" title="${entry.week}">
+        <span class="weekly-tracker-blob ${entry.done ? 'filled' : 'outlined'}" title="${entry.week}" style="background-color: ${entry.done ? color : 'transparent'}; border-color: ${entry.done ? color : '#5f6368'};">
           <span class="week-label">${entry.weekNumber}</span>
         </span>
-        ${showLine ? '<span class="tracker-line active"></span>' : '<span class="tracker-spacer"></span>'}
+        ${showLine ? `<span class="tracker-line active" style="background-color: ${color};"></span>` : '<span class="tracker-spacer"></span>'}
       </div>
     `;
   }).join('');
 
-  return `<div class="weekly-tracker-container" data-year="${year}">${cells}</div>`;
+  return `<div class="weekly-tracker-container" data-year="${year}" data-color="${color}">${cells}</div>`;
 }
